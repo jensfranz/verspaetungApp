@@ -1,18 +1,19 @@
 package de.franz.verspaetungapp.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import de.franz.verspaetungapp.R;
+import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
 
-public class HomeActivity extends Activity {
+@ContentView(R.layout.activity_home)
+public class HomeActivity extends RoboActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
     }
 
 
@@ -29,9 +30,6 @@ public class HomeActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
